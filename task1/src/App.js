@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import { createElement } from 'react';
 
-// вычисление дат это декларативный стиль, мы спрашиваем какой результат хотим получить
 let year = new Date().getFullYear()
 
 let month = null
@@ -46,27 +46,32 @@ switch (String(new Date().getMonth())) {
 
 let day = new Date().getDate()
 
-// эта функция императивный подход, мы сами пишем как сделать что то 
+
 function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-				<p className="App-date">{day} {month} {year}</p>
-			</header>
-		</div>
-	);
+	return createElement(
+		'div',
+		{ className: 'App' },
+		createElement(
+			'header',
+			{ className: 'App-header' },
+			createElement(
+				'img',
+				{ className: 'App-logo', alt: 'logo', src: logo }),
+			createElement(
+				'p',
+				{},
+				'Edit src App.js and save to reload.'),
+			createElement(
+				'a',
+				{ className: 'App-link', href: 'https://reactjs.org', target: '_blank', rel: 'noopener noreferrer' },
+				'Learn React'),
+			createElement(
+				'p',
+				{},
+				day, month, year
+			)
+		)
+	)
 }
 
 export default App;
